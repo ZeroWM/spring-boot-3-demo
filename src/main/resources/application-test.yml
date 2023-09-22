@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: "jdbc:h2:mem:test;MODE=MySQL;DEFAULT_LOCK_TIMEOUT=2000"
+  flyway:
+    locations: "classpath:db/migration,classpath:db/test"
