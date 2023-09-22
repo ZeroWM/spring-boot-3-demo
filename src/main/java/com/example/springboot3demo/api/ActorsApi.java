@@ -1,6 +1,6 @@
 package com.example.springboot3demo.api;
 
-import com.example.springboot3demo.domain.user.User;
+import com.example.springboot3demo.domain.user.Actor;
 import com.example.springboot3demo.domain.user.UserRepository;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,21 +17,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/actors")
 @RequiredArgsConstructor
-public class UsersApi {
+public class ActorsApi {
   private final UserRepository userRepository;
 
   @PostMapping
   @Transactional
-  public ResponseEntity<User> createUser(@RequestBody NewUserParameter param) {
-    User user = new User(param.getUsername(), param.getPhone(), param.getEmail());
-    userRepository.save(user);
-    return ResponseEntity.ok(user);
+  public ResponseEntity<Actor> createUser(@RequestBody NewUserParameter param) {
+    Actor actor = new Actor(param.getUsername(), param.getDisplayName());
+    userRepository.save(actor);
+    return ResponseEntity.ok(actor);
   }
 
   @GetMapping("/{username}")
-  public ResponseEntity<User> getUser(@PathVariable(value = "username") String username) {
+  public ResponseEntity<Actor> getUser(@PathVariable(value = "username") String username) {
     return ResponseEntity.ok(userRepository.findByUsername(username).get());
   }
 }
@@ -42,6 +42,5 @@ public class UsersApi {
 @Builder
 class NewUserParameter {
   private String username;
-  private String phone;
-  private String email;
+  private String displayName;
 }

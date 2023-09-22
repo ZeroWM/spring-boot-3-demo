@@ -9,17 +9,15 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @Entity
-@Table(name = "users")
+@Table(name = "actors")
 @NoArgsConstructor
-public class User {
+public class Actor {
   @Id
   private String username;
-  private String phone;
-  private String email;
+  private String displayName;
 
-  public User(String username, String phone, String email) {
+  public Actor(String username, String displayName) {
     this.username = username;
-    this.phone = phone;
-    this.email = email;
+    this.displayName = displayName;
   }
 }

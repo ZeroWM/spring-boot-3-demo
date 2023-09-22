@@ -1,8 +1,1 @@
-CREATE TABLE `users`
-(
-    `username` varchar(255) NOT NULL,
-    `email`    varchar(255) DEFAULT NULL,
-    `phone`    varchar(32)  DEFAULT NULL,
-    PRIMARY KEY (`username`)
-) ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4;
+CREATE TABLE `actors` (`username` VARCHAR (255) NOT NULL,`display_name` VARCHAR (32) DEFAULT NULL,PRIMARY KEY (`username`)) ENGINE=INNODB DEFAULT CHARSET=utf8mb4;
