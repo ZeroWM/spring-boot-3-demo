@@ -12,15 +12,11 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.web.server.LocalServerPort;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class ActorsApiTest {
-  private static final String BASE_URI = "http://localhost:";
-  @LocalServerPort private int port;
 
-  @MockBean
-  private ActorRepository userRepository;
+  @MockBean private ActorRepository userRepository;
 
   @Test
   public void should_create_user_success() {
@@ -30,7 +26,7 @@ public class ActorsApiTest {
         .contentType(JSON)
         .body(param)
         .when()
-        .post(BASE_URI + port + "/actors")
+        .post("/actors")
         .prettyPeek()
         .then()
         .statusCode(204);
@@ -46,7 +42,7 @@ public class ActorsApiTest {
         .contentType("application/json")
         .header("Content-Type", "application/json")
         .when()
-        .get(BASE_URI + port + "/actors/none")
+        .get("/actors/none")
         .then()
         .statusCode(200);
   }
