@@ -1,16 +1,15 @@
 package com.example.springboot3demo.infrastructure;
 
 import com.example.springboot3demo.domain.user.Actor;
-import com.example.springboot3demo.domain.user.UserRepository;
+import com.example.springboot3demo.domain.user.ActorRepository;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
 @RequiredArgsConstructor
-public class JpaUserRepository implements UserRepository {
-  private final JpaUserMapper userMapper;
+public class JpaActorRepository implements ActorRepository {
+  private final JpaActorMapper userMapper;
 
   @Override
   public Optional<Actor> findByUsername(String username) {

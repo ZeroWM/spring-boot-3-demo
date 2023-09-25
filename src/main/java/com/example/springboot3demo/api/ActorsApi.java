@@ -1,7 +1,7 @@
 package com.example.springboot3demo.api;
 
 import com.example.springboot3demo.domain.user.Actor;
-import com.example.springboot3demo.domain.user.UserRepository;
+import com.example.springboot3demo.domain.user.ActorRepository;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,11 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/actors")
 @RequiredArgsConstructor
 public class ActorsApi {
-  private final UserRepository userRepository;
+  private final ActorRepository userRepository;
 
   @PostMapping
   @Transactional
-  public ResponseEntity<Actor> createUser(@RequestBody NewUserParameter param) {
+  public ResponseEntity<Actor> createUser(@RequestBody NewActorParameter param) {
     Actor actor = new Actor(param.getUsername(), param.getDisplayName());
     userRepository.save(actor);
     return ResponseEntity.noContent().build();
@@ -40,7 +40,7 @@ public class ActorsApi {
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-class NewUserParameter {
+class NewActorParameter {
   private String username;
   private String displayName;
 }

@@ -10,7 +10,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 @DataJpaTest
 public class JpaUserRepositoryTest {
-  @Autowired private JpaUserMapper userMapper;
+  @Autowired private JpaActorMapper userMapper;
 
   @Test
   public void should_get_user_success() {

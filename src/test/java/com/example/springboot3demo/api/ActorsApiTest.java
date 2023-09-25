@@ -6,7 +6,7 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
 import com.example.springboot3demo.domain.user.Actor;
-import com.example.springboot3demo.domain.user.UserRepository;
+import com.example.springboot3demo.domain.user.ActorRepository;
 import java.util.Map;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ public class ActorsApiTest {
   @LocalServerPort private int port;
 
   @MockBean
-  private UserRepository userRepository;
+  private ActorRepository userRepository;
 
   @Test
   public void should_create_user_success() {
