@@ -38,6 +38,6 @@ public class ActorsApiTest {
     when(userRepository.findByUsername(eq("none")))
         .thenReturn(Optional.of(new Actor("QiaoBa", "小狸猫")));
 
-    given().contentType(JSON).when().get("/actors/none").then().statusCode(200);
+    given().contentType(JSON).when().get("/actors/none").prettyPeek().then().statusCode(200);
   }
 }
