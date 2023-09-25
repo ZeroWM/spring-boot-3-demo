@@ -27,7 +27,7 @@ public class ActorsApi {
   public ResponseEntity<Actor> createUser(@RequestBody NewUserParameter param) {
     Actor actor = new Actor(param.getUsername(), param.getDisplayName());
     userRepository.save(actor);
-    return ResponseEntity.ok(actor);
+    return ResponseEntity.noContent().build();
   }
 
   @GetMapping("/{username}")

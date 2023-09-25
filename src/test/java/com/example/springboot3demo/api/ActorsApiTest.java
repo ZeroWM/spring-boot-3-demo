@@ -10,11 +10,15 @@ import com.example.springboot3demo.domain.user.UserRepository;
 import java.util.Map;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.boot.test.web.server.LocalServerPort;
 
-@WebMvcTest(ActorsApi.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ActorsApiTest {
+  private static final String BASE_URI = "http://localhost:";
+  @LocalServerPort private int port;
+
   @MockBean
   private UserRepository userRepository;
 
@@ -22,13 +26,28 @@ public class ActorsApiTest {
   public void should_create_user_success() {
     Actor actor = new Actor("Lufy", "MonkeyDMomoda");
     Map<String, Object> param = Map.of("username", actor.getUsername(), "displayName", actor.getDisplayName() );
-    given().contentType(JSON).body(param).when().post("/actors").prettyPeek().then().statusCode(201);
+    given()
+        .contentType(JSON)
+        .body(param)
+        .when()
+        .post(BASE_URI + port + "/actors")
+        .prettyPeek()
+        .then()
+        .statusCode(204);
   }
+
 
   @Test
   public void should_get_user_success() {
-    when(userRepository.findByUsername(eq("none"))).thenReturn(Optional.empty());
-    given().contentType(JSON).when().get("/actors/{username}", "none").then().statusCode(200);
+    when(userRepository.findByUsername(eq("none")))
+        .thenReturn(Optional.of(new Actor("QiaoBa", "小狸猫")));
 
+    given()
+        .contentType("application/json")
+        .header("Content-Type", "application/json")
+        .when()
+        .get(BASE_URI + port + "/actors/none")
+        .then()
+        .statusCode(200);
   }
 }
