@@ -7,3 +7,8 @@ spring:
   flyway:
     validate-on-migrate: false
     table: schema_version
+
+
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mapper/*.xml

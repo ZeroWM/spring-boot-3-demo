@@ -1,7 +1,7 @@
 package com.example.springboot3demo.api;
 
-import com.example.springboot3demo.domain.user.Actor;
-import com.example.springboot3demo.domain.user.ActorRepository;
+import com.example.springboot3demo.domain.actor.Actor;
+import com.example.springboot3demo.domain.actor.ActorRepository;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

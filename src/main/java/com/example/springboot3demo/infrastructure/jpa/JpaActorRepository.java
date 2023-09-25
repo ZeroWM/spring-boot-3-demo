@@ -1,7 +1,7 @@
-package com.example.springboot3demo.infrastructure;
+package com.example.springboot3demo.infrastructure.jpa;
 
-import com.example.springboot3demo.domain.user.Actor;
-import com.example.springboot3demo.domain.user.ActorRepository;
+import com.example.springboot3demo.domain.actor.Actor;
+import com.example.springboot3demo.domain.actor.ActorRepository;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -9,15 +9,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 @RequiredArgsConstructor
 public class JpaActorRepository implements ActorRepository {
-  private final JpaActorMapper userMapper;
+  private final JpaActorMapper actorMapper;
 
   @Override
   public Optional<Actor> findByUsername(String username) {
-    return userMapper.findById(username);
+    return actorMapper.findById(username);
   }
 
   @Override
   public void save(Actor actor) {
-    userMapper.save(actor);
+    actorMapper.save(actor);
   }
 }

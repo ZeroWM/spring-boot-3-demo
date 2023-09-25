@@ -1,4 +1,4 @@
-package com.example.springboot3demo.domain.user;
+package com.example.springboot3demo.domain.actor;
 
 import java.util.Optional;
 

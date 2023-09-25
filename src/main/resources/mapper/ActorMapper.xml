@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.springboot3demo.infrastructure.mybatis.ActorMapper">
+    <select id="findByUsername" resultMap="actor">
+        select username, display_name
+        from actors
+        where username = #{username};
+    </select>
+
+    <update id="insertActor">
+        insert into actors(username, display_name)
+        values (#{username}, #{displayName})
+    </update>
+
+    <resultMap id="actor" type="com.example.springboot3demo.domain.actor.Actor">
+        <id column="username" property="username"/>
+        <result column="display_name" property="displayName"/>
+    </resultMap>
+</mapper>

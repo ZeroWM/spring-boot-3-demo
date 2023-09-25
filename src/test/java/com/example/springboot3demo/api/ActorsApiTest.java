@@ -5,8 +5,8 @@ import static io.restassured.http.ContentType.JSON;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
-import com.example.springboot3demo.domain.user.Actor;
-import com.example.springboot3demo.domain.user.ActorRepository;
+import com.example.springboot3demo.domain.actor.Actor;
+import com.example.springboot3demo.domain.actor.ActorRepository;
 import java.util.Map;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
