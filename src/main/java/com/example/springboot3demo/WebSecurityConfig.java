@@ -16,9 +16,14 @@ public class WebSecurityConfig {
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    http.authorizeHttpRequests(
+    http.csrf((csrf) -> csrf.ignoringRequestMatchers("/actors", "/actors/**"))
+        .authorizeHttpRequests(
             (requests) ->
-                requests.requestMatchers("/", "/actors/*").permitAll().anyRequest().authenticated())
+                requests
+                    .requestMatchers("/", "/actors", "/actors/**")
+                    .permitAll()
+                    .anyRequest()
+                    .authenticated())
         .formLogin((form) -> form.loginPage("/login").permitAll())
         .logout((logout) -> logout.permitAll());
 
